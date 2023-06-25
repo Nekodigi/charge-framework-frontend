@@ -1,7 +1,7 @@
 import * as PaletteColorOptions from "@mui/material/styles/createPalette";
 import { createTheme } from "@mui/material/styles";
 import { string } from "prop-types";
-import { blue, green, indigo } from "@mui/material/colors";
+import { blue, green, indigo, red } from "@mui/material/colors";
 
 //You can use themeContext if theme is not applied
 // PaletteOptions を拡張して、カラーキーワードを追加
@@ -14,6 +14,8 @@ declare module "@mui/material/styles" {
       black: string;
       blackOp50: string;
       green500: string;
+      red500: string;
+      blue500: string;
       gray800: string;
       gray400: string;
       gray500: string;
@@ -61,6 +63,8 @@ export const themeCommon = {
   black: "#000000",
   blackOp50: "rgba(0, 0, 0, 0.5);",
   green500: green["500"],
+  red500: red["500"],
+  blue500: blue["500"],
   gray800: "#424242",
   gray500: "#9E9E9E",
   gray400: "#BDBDBD",

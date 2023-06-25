@@ -17,7 +17,7 @@ export const ProgressWithLabel = (
       <Box sx={{ width: "100%", mr: 1 }}>
         <LinearProgress
           variant="determinate"
-          value={(props.current / props.maximum) * 100}
+          value={Math.min(100, (props.current / props.maximum) * 100)}
           {...props}
           sx={{
             height: 12,

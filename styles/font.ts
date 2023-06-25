@@ -52,7 +52,12 @@ export const fontTypes = (theme: Theme) => {
     item: css([
       fontSizes.px18,
       fontFamilies.Jp,
-      { fontWeight: 500, color: theme.palette.text.secondary },
+      { fontWeight: 500, color: theme.palette.text.primary },
+    ]),
+    body: css([
+      fontSizes.px16,
+      fontFamilies.Jp,
+      { fontWeight: 500, color: theme.palette.text.primary },
     ]),
     disc: css([
       fontSizes.px14,
