@@ -1,5 +1,7 @@
 import { auth } from "@/lib/firebase/firebase";
+import axios from "axios";
 import { User } from "firebase/auth";
+import { useParams, useSearchParams } from "next/navigation";
 import {
   createContext,
   useState,
@@ -21,6 +23,8 @@ export function useAuthContext() {
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
+  const searchParams = useSearchParams();
+  const { service_id } = useParams();
 
   const value = {
     user,
@@ -31,6 +35,17 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const unsubscribed = auth.onAuthStateChanged((user) => {
       setUser(user);
       setLoading(false);
+      const onUser = async () => {
+        let link_target = searchParams.get("link_target");
+        if (link_target) {
+          let res = await axios({
+            url: `${process.env.NEXT_PUBLIC_BACKEND_URL}/redirect/${service_id}/${link_target}?dest_user=${user?.uid}`,
+            method: "put",
+            data: {},
+          });
+        }
+      };
+      onUser();
     });
     return () => {
       unsubscribed();

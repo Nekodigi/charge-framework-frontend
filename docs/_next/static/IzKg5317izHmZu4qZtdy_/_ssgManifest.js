@@ -1,1 +1,0 @@
-self.__SSG_MANIFEST=new Set(["\u002F[service_id]","\u002F[service_id]\u002Flogin","\u002F[service_id]\u002Fsignup","\u002F[service_id]\u002Fsubscription\u002Fcancel","\u002F[service_id]\u002Fsubscription\u002Fcanceled","\u002F[service_id]\u002Fsubscription\u002Fresume","\u002F[service_id]\u002Fsubscription\u002Fresumed"]);self.__SSG_MANIFEST_CB&&self.__SSG_MANIFEST_CB()
