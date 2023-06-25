@@ -22,7 +22,7 @@ import { useAuthContext } from "@/utils/contexts/AuthContext";
 import { useEffect, useMemo, useState } from "react";
 import { Logout, PersonAdd, Settings } from "@mui/icons-material";
 import { auth } from "@/lib/firebase/firebase";
-import { useParams, useRouter } from "next/navigation";
+import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { UserAvatarMenu } from "./UserAvatarMenu";
 import axios from "axios";
 
@@ -31,6 +31,7 @@ export const Header = () => {
   const theme = useTheme();
   const router = useRouter();
   const { service_id } = useParams();
+  const searchParams = useSearchParams();
   const [serviceName, setServiceName] = useState("");
 
   useEffect(() => {
@@ -71,7 +72,9 @@ export const Header = () => {
             ) : (
               <BasicButton
                 type="contained"
-                href={`/${service_id}/login`}
+                href={`/${service_id}/login?link_target=${searchParams.get(
+                  "link_target"
+                )}`}
                 label="Login"
                 style={{
                   padding: 12,

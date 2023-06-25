@@ -74,6 +74,7 @@ export const PlanCard = ({
           setApplyMessage("Upgrade plan");
         }
         if (currentPlan !== "basic") {
+          console.log(`${process.env.NEXT_PUBLIC_BACKEND_URL}/subscription/url/${service_id}/${user?.uid}/${plan.id}?success_url=${window.location.href}&cancel_url=${window.location.href}`)
           setHref(
             `${process.env.NEXT_PUBLIC_BACKEND_URL}/subscription/url/${service_id}/${user?.uid}/${plan.id}?success_url=${window.location.href}&cancel_url=${window.location.href}`
           );
