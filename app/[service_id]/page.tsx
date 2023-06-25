@@ -27,9 +27,22 @@ import { Plan } from "@/utils/types/plan";
 import { planColor, planKeyType, planName } from "@/utils/consts/plan";
 import { Metadata, ResolvingMetadata } from "next";
 
-export default function Home() {
+export async function generateStaticParams() {
+  console.log("MAKE REEQS");
+  let res = await axios({
+    url: `${process.env.NEXT_PUBLIC_BACKEND_URL}/service/list`,
+    method: "get",
+    data: {},
+  });
+  console.log(res.data.list);
+  return res.data.list.map((id: string) => {
+    return { service_id: id };
+  });
+}
+
+export default function Home({ params }: { params: { service_id: string } }) {
   const theme = lightTheme;
-  const { service_id } = useParams();
+  const { service_id } = params;
   const { user } = useAuthContext();
   const [cancelAtPeriodEnd, setCancelAtPeriodEnd] = useState(false);
   const [currentPlan, setCurrentPlan] = useState("");
