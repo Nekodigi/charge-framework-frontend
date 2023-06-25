@@ -27,19 +27,6 @@ import { Plan } from "@/utils/types/plan";
 import { planColor, planKeyType, planName } from "@/utils/consts/plan";
 import { Metadata, ResolvingMetadata } from "next";
 
-export async function generateStaticParams() {
-  console.log("MAKE REEQS");
-  let res = await axios({
-    url: `${process.env.NEXT_PUBLIC_BACKEND_URL}/service/list`,
-    method: "get",
-    data: {},
-  });
-  console.log(res.data.list);
-  return res.data.list.map((id: string) => {
-    return { service_id: id };
-  });
-}
-
 export default function Home({ params }: { params: { service_id: string } }) {
   const theme = lightTheme;
   const { service_id } = params;
@@ -57,6 +44,7 @@ export default function Home({ params }: { params: { service_id: string } }) {
         method: "get",
         data: {},
       });
+
       let data = res.data;
       setCancelAtPeriodEnd(data.cancel_at_period_end);
       setCurrentPlan(data.plan);
@@ -67,6 +55,7 @@ export default function Home({ params }: { params: { service_id: string } }) {
         data: {},
       });
       data = res.data;
+
       console.log(data);
       setPlans(data.plan);
       res = await axios({
