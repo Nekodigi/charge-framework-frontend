@@ -25,6 +25,7 @@ import { useEffect, useMemo, useState } from "react";
 import axios from "axios";
 import { Plan } from "@/utils/types/plan";
 import { planColor, planKeyType, planName } from "@/utils/consts/plan";
+import { Metadata, ResolvingMetadata } from "next";
 
 export default function Home() {
   const theme = lightTheme;
