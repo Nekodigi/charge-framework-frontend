@@ -50,6 +50,7 @@ declare module "@mui/material/styles" {
       white: string;
       gray: string;
       nekodigi: string;
+      whiteDark: string;
     };
   }
 

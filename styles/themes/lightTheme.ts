@@ -19,6 +19,7 @@ const lightTheme = createTheme({
       black: black,
       gray: gray,
       nekodigi: "linear-gradient(117.75deg, #CC208E 16.15%, #6713D2 87.96%);",
+      whiteDark: "#D1D1D1",
     },
     text: {
       primary: black,

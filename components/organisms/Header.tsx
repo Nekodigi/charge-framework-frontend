@@ -72,9 +72,11 @@ export const Header = () => {
             ) : (
               <BasicButton
                 type="contained"
-                href={`/${service_id}/login?link_target=${searchParams.get(
-                  "link_target"
-                )}`}
+                href={`/${service_id}/login${
+                  searchParams.get("link_target")
+                    ? `?link_target=${searchParams.get("link_target")}`
+                    : ""
+                }`}
                 label="Login"
                 style={{
                   padding: 12,

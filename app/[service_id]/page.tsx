@@ -26,9 +26,10 @@ import axios from "axios";
 import { Plan } from "@/utils/types/plan";
 import { planColor, planKeyType, planName } from "@/utils/consts/plan";
 import { Metadata, ResolvingMetadata } from "next";
+import { Footer } from "@/components/organisms/Footer";
 
 export default function Home({ params }: { params: { service_id: string } }) {
-  const theme = lightTheme;
+  const theme = useTheme();
   const { service_id } = params;
   const { user } = useAuthContext();
   const [cancelAtPeriodEnd, setCancelAtPeriodEnd] = useState(false);
@@ -84,9 +85,9 @@ export default function Home({ params }: { params: { service_id: string } }) {
   }, [plans]);
 
   return (
-    <div>
+    <Box>
       <Header />
-      <Container maxWidth="md" sx={{ py: 4 }}>
+      <Container maxWidth="md" sx={{ py: 4, minHeight: "100vh" }}>
         <Stack gap={4}>
           <Stack gap={1.5}>
             <Typography css={fontTypes(theme).title}>Your Token</Typography>
@@ -109,6 +110,7 @@ export default function Home({ params }: { params: { service_id: string } }) {
           </Grid>
         </Stack>
       </Container>
-    </div>
+      <Footer />
+    </Box>
   );
 }

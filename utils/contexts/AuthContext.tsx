@@ -37,7 +37,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       setLoading(false);
       const onUser = async () => {
         let link_target = searchParams.get("link_target");
-        if (link_target) {
+        console.log("proceed?" + link_target);
+        if (user?.uid && link_target) {
+          console.log("updated!");
           let res = await axios({
             url: `${process.env.NEXT_PUBLIC_BACKEND_URL}/redirect/${service_id}/${link_target}?dest_user=${user?.uid}`,
             method: "put",
